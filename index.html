@@ -138,13 +138,13 @@
 
   <section class="hero">
     <div class="content">
-      <article class="panel active" data-label="Introduction" data-meta="About Jason" data-image="./jason-portrait.jpg" data-image-alt="Portrait of Jason Wu">
+      <article class="panel active" data-label="Introduction" data-image="./jason-portrait.jpg" data-image-alt="Portrait of Jason Wu">
         <div class="eyebrow">Introduction</div>
         <h1>I am Jason Wu.<br>An independent product designer and advisor.</h1>
         <p class="body">I help founders and product teams turn complex ideas into clear, useful digital products. Based in the San Francisco Bay Area, I work across product strategy, interaction design, and design leadership.</p>
       </article>
 
-      <article class="panel" data-label="Experience" data-meta="Work background" data-image="./jason-portrait.jpg" data-image-alt="Portrait of Jason Wu">
+      <article class="panel" data-label="Experience" data-image="./jason-portrait.jpg" data-image-alt="Portrait of Jason Wu">
         <div class="eyebrow">Experience</div>
         <h1>20+ years designing digital products.</h1>
         <p class="body">Former Head of Design at Shippo and Zendesk’s first design hire, later Product Design Director. Now working independently with founders and product teams on product strategy, interaction design, and new product development.</p>
@@ -153,7 +153,7 @@
         </div>
       </article>
 
-      <article class="panel" id="works" data-label="Selected work" data-meta="Clients by focus area" data-image="./jason-portrait.jpg" data-image-alt="Portrait of Jason Wu">
+      <article class="panel" id="works" data-label="Selected work" data-image="./jason-portrait.jpg" data-image-alt="Portrait of Jason Wu">
         <div class="eyebrow">Selected work</div>
         <h1>Design work across four areas.</h1>
         <div class="work-index">
@@ -164,7 +164,7 @@
         </div>
       </article>
 
-      <article class="panel" data-label="Elsewhere" data-meta="Say hi!" data-meta-href="./request.html" data-image="./jason-portrait.jpg" data-image-alt="Portrait of Jason Wu">
+      <article class="panel" data-label="Elsewhere" data-image="./jason-portrait.jpg" data-image-alt="Portrait of Jason Wu">
         <div class="eyebrow">Elsewhere</div>
         <h1>Find me online.</h1>
         <div class="social-links">
@@ -179,7 +179,7 @@
   </section>
 
   <footer>
-    <a class="footer-meta" id="meta">About Jason</a>
+    <a class="footer-meta" href="./request.html" aria-label="Open the Say hi project request form">Say hi!</a>
     <div class="controls"><button class="icon-button" id="prev" aria-label="Previous section"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button><span class="count" id="count">01 / 04</span><button class="icon-button" id="next" aria-label="Next section"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button><span class="rule"><i id="indicator"></i></span></div>
   </footer>
 </main>
@@ -204,20 +204,12 @@ themeToggle.addEventListener('click',()=>{
 });
 
 const panels=[...document.querySelectorAll('.panel')];
-const meta=document.getElementById('meta'),count=document.getElementById('count'),indicator=document.getElementById('indicator'),sideImage=document.getElementById('sideImage');
+const count=document.getElementById('count'),indicator=document.getElementById('indicator'),sideImage=document.getElementById('sideImage');
 let current=0;
 function show(index){
   current=(index+panels.length)%panels.length;
   panels.forEach((panel,i)=>panel.classList.toggle('active',i===current));
   const activePanel=panels[current];
-  meta.textContent=activePanel.dataset.meta;
-  if(activePanel.dataset.metaHref){
-    meta.href=activePanel.dataset.metaHref;
-    meta.setAttribute('aria-label','Open the Say hi project request form');
-  }else{
-    meta.removeAttribute('href');
-    meta.removeAttribute('aria-label');
-  }
   count.textContent=String(current+1).padStart(2,'0')+' / '+String(panels.length).padStart(2,'0');
   indicator.style.transform=`translateX(${current*100}%)`;
   if(sideImage && activePanel.dataset.image){
