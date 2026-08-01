@@ -87,19 +87,19 @@
 
   <section class="hero">
     <div class="content">
-      <article class="panel active" data-label="Introduction" data-meta="About Jason">
+      <article class="panel active" data-label="Introduction" data-meta="About Jason" data-image="./jason-portrait.jpg" data-image-alt="Portrait of Jason Wu">
         <div class="eyebrow">Introduction</div>
         <h1>I am Jason Wu.<br>An independent product designer and advisor.</h1>
         <p class="body">I help founders and product teams turn complex ideas into clear, useful digital products. Based in the San Francisco Bay Area, I work across product strategy, interaction design, and design leadership.</p>
       </article>
 
-      <article class="panel" data-label="Experience" data-meta="Work background">
+      <article class="panel" data-label="Experience" data-meta="Work background" data-image="./jason-portrait.jpg" data-image-alt="Portrait of Jason Wu">
         <div class="eyebrow">Experience</div>
         <h1>I’ve spent the past two decades designing digital products.</h1>
         <p class="body">Previously Head of Design at Shippo and Product Design Director at Zendesk. I now work independently with founders and product teams on product strategy, interaction design, and new product development.</p>
       </article>
 
-      <article class="panel" id="works" data-label="Selected work" data-meta="Browse by category">
+      <article class="panel" id="works" data-label="Selected work" data-meta="Browse by category" data-image="./work-image.jpg" data-image-alt="Selected product design work preview">
         <div class="eyebrow">Selected work</div>
         <h1>Design work across four areas.</h1>
         <div class="work-links">
@@ -110,7 +110,7 @@
         </div>
       </article>
 
-      <article class="panel" data-label="Elsewhere" data-meta="Find me online">
+      <article class="panel" data-label="Elsewhere" data-meta="Find me online" data-image="./jason-portrait.jpg" data-image-alt="Portrait of Jason Wu">
         <div class="eyebrow">Elsewhere</div>
         <h1>Find me online.</h1>
         <div class="social-links">
@@ -121,7 +121,7 @@
         </div>
       </article>
     </div>
-    <figure class="portrait-window"><img src="./jason-portrait.jpg" alt="Portrait of Jason Wu" /></figure>
+    <figure class="portrait-window"><img id="sideImage" src="./jason-portrait.jpg" alt="Portrait of Jason Wu" /></figure>
   </section>
 
   <footer>
@@ -150,15 +150,20 @@ themeToggle.addEventListener('click',()=>{
 });
 
 const panels=[...document.querySelectorAll('.panel')];
-const label=document.getElementById('label'),meta=document.getElementById('meta'),count=document.getElementById('count'),indicator=document.getElementById('indicator');
+const label=document.getElementById('label'),meta=document.getElementById('meta'),count=document.getElementById('count'),indicator=document.getElementById('indicator'),sideImage=document.getElementById('sideImage');
 let current=0;
 function show(index){
   current=(index+panels.length)%panels.length;
   panels.forEach((panel,i)=>panel.classList.toggle('active',i===current));
-  label.textContent=panels[current].dataset.label;
-  meta.textContent=panels[current].dataset.meta;
+  const activePanel=panels[current];
+  label.textContent=activePanel.dataset.label;
+  meta.textContent=activePanel.dataset.meta;
   count.textContent=String(current+1).padStart(2,'0')+' / '+String(panels.length).padStart(2,'0');
   indicator.style.transform=`translateX(${current*100}%)`;
+  if(sideImage && activePanel.dataset.image){
+    sideImage.src=activePanel.dataset.image;
+    sideImage.alt=activePanel.dataset.imageAlt || '';
+  }
 }
 document.getElementById('prev').onclick=()=>show(current-1);
 document.getElementById('next').onclick=()=>show(current+1);
