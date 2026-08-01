@@ -39,6 +39,9 @@
   .experience-group{display:flex;flex-direction:column;gap:8px}
   .experience-group strong{font-size:11px;line-height:1.2;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:500}
   .experience-group span{font-size:14px;line-height:1.55;color:var(--body)}
+  .focus-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:28px;max-width:560px;border-top:1px solid var(--line)}
+  .focus-item{display:block;font-size:14px;line-height:1.45;color:var(--body);padding:10px 0;border-bottom:1px solid var(--line)}
+  .focus-item:last-child{grid-column:1 / -1}
   #works h1{font-size:clamp(48px,4vw,64px);margin-bottom:18px}
   .work-index{width:100%;max-width:760px;border-top:1px solid var(--line)}
   .work-row{display:grid;grid-template-columns:minmax(190px,.8fr) minmax(0,1.2fr);gap:32px;align-items:baseline;padding:15px 0;border-bottom:1px solid var(--line)}
@@ -108,6 +111,8 @@
     .experience-meta{grid-template-columns:1fr;gap:16px;margin-top:24px}
     .experience-group{gap:6px}
     .experience-group span{font-size:13px}
+    .focus-grid{grid-template-columns:1fr;column-gap:0}
+    .focus-item:last-child{grid-column:auto}
     .portrait-window{display:none}
     footer{position:relative;z-index:3;padding-top:12px;align-items:center;background:var(--bg)}
     #works h1{font-size:clamp(40px,10.5vw,50px);margin-bottom:16px}
@@ -139,8 +144,7 @@
         <h1>20+ years designing digital products.</h1>
         <p class="body">Former Head of Design at Shippo and Zendesk’s first design hire, later Product Design Director. Now working independently with founders and product teams on product strategy, interaction design, and new product development.</p>
         <div class="experience-meta">
-          <div class="experience-group"><strong>Skills</strong><span>Product strategy · Interaction design · Prototyping · Design leadership · 0-to-1 product development</span></div>
-          <div class="experience-group"><strong>Tools</strong><span>Figma · Claude</span></div>
+          <div class="experience-group"><strong>Focus</strong><span class="focus-grid"><span class="focus-item">Product strategy</span><span class="focus-item">Interaction design</span><span class="focus-item">Prototyping</span><span class="focus-item">Design leadership</span><span class="focus-item">0-to-1 product development</span></span></div>
         </div>
       </article>
 
