@@ -52,7 +52,13 @@
   .work-index{width:100%;max-width:760px;border-top:1px solid var(--line)}
   .work-row{display:grid;grid-template-columns:minmax(190px,.8fr) minmax(0,1.2fr);gap:32px;align-items:baseline;padding:15px 0;border-bottom:1px solid var(--line)}
   .work-row strong{font-size:clamp(17px,1.35vw,21px);font-weight:500;line-height:1.2;letter-spacing:-.015em;transition:transform .2s ease}
-  .work-clients{font-size:13px;line-height:1.5;color:var(--muted)}
+  .work-clients{display:flex;flex-wrap:wrap;align-items:baseline;font-size:13px;line-height:1.5;color:var(--muted)}
+  .client-link,.client-name{white-space:nowrap}
+  .client-link{position:relative;transition:color .2s ease}
+  .client-link:after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .2s ease}
+  .client-link:hover{color:var(--fg)}
+  .client-link:hover:after{transform:scaleX(1)}
+  .client-sep{margin:0 7px;color:var(--muted)}
   .work-row:hover strong{transform:translateX(4px)}
   .social-links{display:flex;flex-direction:column;align-items:flex-start;gap:12px;margin-top:12px}
   .social-link{font-size:clamp(24px,2.2vw,34px);line-height:1.2;font-weight:500;letter-spacing:-.02em;color:var(--fg);position:relative}
@@ -182,10 +188,10 @@
         <div class="eyebrow">Selected clients</div>
         <h1>Clients across four focus areas.</h1>
         <div class="work-index">
-          <a class="work-row" href="#"><strong>Fintech &amp; Payments</strong><span class="work-clients">Supertab</span></a>
-          <a class="work-row" href="#"><strong>Enterprise &amp; B2B</strong><span class="work-clients">Zendesk · Shippo · Ironclad · Kodex · Rainforest QA · Brightback</span></a>
-          <a class="work-row" href="#"><strong>Consumer Products</strong><span class="work-clients">Contribute.to</span></a>
-          <a class="work-row" href="#"><strong>Social Platforms</strong><span class="work-clients">Mighty Networks</span></a>
+          <div class="work-row"><strong>Enterprise &amp; B2B</strong><span class="work-clients"><a class="client-link" href="https://www.zendesk.com/" target="_blank" rel="noopener noreferrer">Zendesk</a><span class="client-sep">·</span><a class="client-link" href="https://goshippo.com/" target="_blank" rel="noopener noreferrer">Shippo</a><span class="client-sep">·</span><a class="client-link" href="https://ironcladapp.com/" target="_blank" rel="noopener noreferrer">Ironclad</a><span class="client-sep">·</span><a class="client-link" href="https://www.kodexglobal.com/" target="_blank" rel="noopener noreferrer">Kodex</a><span class="client-sep">·</span><a class="client-link" href="https://www.rainforestqa.com/" target="_blank" rel="noopener noreferrer">Rainforest QA</a></span></div>
+          <div class="work-row"><strong>Fintech &amp; Payments</strong><span class="work-clients"><a class="client-link" href="https://supertab.co/" target="_blank" rel="noopener noreferrer">Supertab</a></span></div>
+          <div class="work-row"><strong>Consumer Products</strong><span class="work-clients"><a class="client-link" href="https://jw1019.github.io/contribute-demos/contribute-landing.html" target="_blank" rel="noopener noreferrer">Contribute.to</a></span></div>
+          <div class="work-row"><strong>Social Platforms</strong><span class="work-clients"><a class="client-link" href="https://www.mightynetworks.com/" target="_blank" rel="noopener noreferrer">Mighty Networks</a></span></div>
         </div>
       </article>
 
