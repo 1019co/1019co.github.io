@@ -28,7 +28,7 @@
   .hero{align-self:stretch;display:grid;grid-template-columns:minmax(0,1.08fr) minmax(360px,.92fr);gap:clamp(72px,7vw,112px);align-items:center;max-width:1460px;width:100%;min-height:0;margin:0 auto;padding:28px 0}
   .portrait-window{position:relative;width:min(100%,610px,calc((100dvh - 170px) / 1.15));max-height:calc(100dvh - 170px);aspect-ratio:1/1.15;overflow:hidden;background:var(--portrait-bg);justify-self:end}
   .portrait-window img{width:100%;height:100%;object-fit:cover;object-position:center 34%;display:block;transform:scale(1.01)}
-  .portrait-window:after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(255,255,255,.12);pointer-events:none}
+  .portrait-window:after{content:none}
   .content{position:relative;min-width:0;min-height:0;height:100%;display:flex;align-items:center}
   .panel{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;opacity:0;transform:translateY(10px);pointer-events:none;transition:opacity .45s ease,transform .45s ease}
   .panel.active{opacity:1;transform:translateY(0);pointer-events:auto}
@@ -70,7 +70,6 @@
       aspect-ratio:auto;
       justify-self:stretch;
       align-self:stretch;
-      border-left:1px solid var(--line);
     }
     .portrait-window img{object-position:46% 34%;transform:none}
     h1{font-size:clamp(60px,6.25vw,72px);max-width:720px}
