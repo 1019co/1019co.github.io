@@ -35,8 +35,10 @@
   .eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:24px}
   h1{font-size:clamp(60px,4.65vw,72px);line-height:1.01;letter-spacing:-.05em;font-weight:520;max-width:680px;margin:0 0 26px;overflow-wrap:anywhere}
   .body{font-size:clamp(17px,1.28vw,21px);line-height:1.52;color:var(--body);max-width:620px;margin:0}
-  .selected-clients{margin:22px 0 0;max-width:640px;font-size:13px;line-height:1.6;color:var(--muted)}
-  .selected-clients strong{color:var(--fg);font-weight:500}
+  .experience-meta{display:grid;grid-template-columns:1fr 1fr;gap:32px;max-width:620px;margin-top:30px}
+  .experience-group{display:flex;flex-direction:column;gap:8px}
+  .experience-group strong{font-size:11px;line-height:1.2;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:500}
+  .experience-group span{font-size:14px;line-height:1.55;color:var(--body)}
   #works h1{font-size:clamp(48px,4vw,64px);margin-bottom:18px}
   .work-index{width:100%;max-width:760px;border-top:1px solid var(--line)}
   .work-row{display:grid;grid-template-columns:minmax(190px,.8fr) minmax(0,1.2fr);gap:32px;align-items:baseline;padding:15px 0;border-bottom:1px solid var(--line)}
@@ -103,6 +105,9 @@
     .panel{position:absolute}
     h1{font-size:clamp(40px,12vw,58px);max-width:100%}
     .body{max-width:100%;font-size:17px}
+    .experience-meta{grid-template-columns:1fr;gap:16px;margin-top:24px}
+    .experience-group{gap:6px}
+    .experience-group span{font-size:13px}
     .portrait-window{display:none}
     footer{position:relative;z-index:3;padding-top:12px;align-items:center;background:var(--bg)}
     #works h1{font-size:clamp(40px,10.5vw,50px);margin-bottom:16px}
@@ -133,17 +138,20 @@
         <div class="eyebrow">Experience</div>
         <h1>I’ve spent the past two decades designing digital products.</h1>
         <p class="body">Previously Head of Design at Shippo and Product Design Director at Zendesk. I now work independently with founders and product teams on product strategy, interaction design, and new product development.</p>
-        <p class="selected-clients"><strong>Selected clients:</strong> Kodex, Supertab, Ironclad, Brightback, Rainforest QA, and Mighty Networks.</p>
+        <div class="experience-meta">
+          <div class="experience-group"><strong>Capabilities</strong><span>Product strategy · Interaction design · Prototyping · Design leadership</span></div>
+          <div class="experience-group"><strong>Tools</strong><span>Figma · Claude Code</span></div>
+        </div>
       </article>
 
       <article class="panel" id="works" data-label="Selected work" data-meta="Browse by category" data-image="./jason-portrait.jpg" data-image-alt="Portrait of Jason Wu">
         <div class="eyebrow">Selected work</div>
         <h1>Design work across four areas.</h1>
         <div class="work-index">
-          <a class="work-row" href="#"><strong>Fintech &amp; Payments</strong><span class="work-clients">Supertab · Contribute.to</span></a>
-          <a class="work-row" href="#"><strong>Enterprise &amp; B2B</strong><span class="work-clients">Zendesk · Ironclad · Kodex · Rainforest QA</span></a>
-          <a class="work-row" href="#"><strong>Consumer Products</strong><span class="work-clients">Shippo · Brightback</span></a>
-          <a class="work-row" href="#"><strong>AI &amp; Community</strong><span class="work-clients">Supertab · Mighty Networks</span></a>
+          <a class="work-row" href="#"><strong>Fintech &amp; Payments</strong><span class="work-clients">Supertab</span></a>
+          <a class="work-row" href="#"><strong>Enterprise &amp; B2B</strong><span class="work-clients">Zendesk · Shippo · Ironclad · Kodex · Rainforest QA · Brightback</span></a>
+          <a class="work-row" href="#"><strong>Consumer Products</strong><span class="work-clients">Contribute.to</span></a>
+          <a class="work-row" href="#"><strong>Social Platforms</strong><span class="work-clients">Mighty Networks</span></a>
         </div>
       </article>
 
