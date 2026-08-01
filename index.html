@@ -35,12 +35,14 @@
   .eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:24px}
   h1{font-size:clamp(60px,4.65vw,72px);line-height:1.01;letter-spacing:-.05em;font-weight:520;max-width:680px;margin:0 0 26px;overflow-wrap:anywhere}
   .body{font-size:clamp(17px,1.28vw,21px);line-height:1.52;color:var(--body);max-width:620px;margin:0}
-  .client-list{margin:22px 0 0;max-width:640px;font-size:13px;line-height:1.6;color:var(--muted)}
-  .client-list strong{color:var(--fg);font-weight:500}
-  .work-links{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:14px;max-width:680px;border-top:1px solid var(--line)}
-  .work-link{display:flex;justify-content:space-between;gap:20px;padding:18px 0;border-bottom:1px solid var(--line);font-size:clamp(18px,1.5vw,22px)}
-  .work-link:nth-child(odd){padding-right:26px}.work-link:nth-child(even){padding-left:26px;border-left:1px solid var(--line)}
-  .work-link > span:first-child{display:flex;flex-direction:column;gap:6px}.work-link strong{font-size:inherit;font-weight:500;line-height:1.15}.work-link small{font-size:12px;line-height:1.35;color:var(--muted);font-weight:400}.work-link > span:last-child{color:var(--muted);transition:transform .2s ease}.work-link:hover > span:last-child{transform:translateX(4px);color:var(--fg)}
+  .selected-clients{margin:22px 0 0;max-width:640px;font-size:13px;line-height:1.6;color:var(--muted)}
+  .selected-clients strong{color:var(--fg);font-weight:500}
+  #works h1{font-size:clamp(48px,4vw,64px);margin-bottom:18px}
+  .work-index{width:100%;max-width:760px;border-top:1px solid var(--line)}
+  .work-row{display:grid;grid-template-columns:minmax(190px,.8fr) minmax(0,1.2fr);gap:32px;align-items:baseline;padding:15px 0;border-bottom:1px solid var(--line)}
+  .work-row strong{font-size:clamp(17px,1.35vw,21px);font-weight:500;line-height:1.2;letter-spacing:-.015em;transition:transform .2s ease}
+  .work-clients{font-size:13px;line-height:1.5;color:var(--muted)}
+  .work-row:hover strong{transform:translateX(4px)}
   .social-links{display:flex;flex-direction:column;align-items:flex-start;gap:12px;margin-top:12px}
   .social-link{font-size:clamp(24px,2.2vw,34px);line-height:1.2;font-weight:500;letter-spacing:-.02em;color:var(--fg);position:relative}
   .social-link:after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .2s ease}
@@ -49,7 +51,7 @@
   .section-label{font-size:12px;line-height:1.5;color:var(--muted)}
   .section-label strong{display:block;color:var(--fg);font-weight:500;margin-bottom:2px}
   .controls{display:flex;align-items:center;gap:14px}
-  button{appearance:none;border:0;background:none;color:var(--fg);font:inherit;padding:7px;cursor:pointer;opacity:.72}button:hover{opacity:1}.icon-button{width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center}.icon-button svg{width:18px;height:18px;stroke-width:1.7}.work-icon{width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto}.work-icon svg{width:18px;height:18px;stroke-width:1.7}
+  button{appearance:none;border:0;background:none;color:var(--fg);font:inherit;padding:7px;cursor:pointer;opacity:.72}button:hover{opacity:1}.icon-button{width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center}.icon-button svg{width:18px;height:18px;stroke-width:1.7}
   .count{font-size:11px;letter-spacing:.08em;min-width:46px;text-align:center}
   .rule{width:98px;height:1px;background:var(--line);position:relative;overflow:hidden}.rule i{display:block;width:25%;height:100%;background:var(--fg);transition:transform .4s ease}
   @media(max-width:1180px) and (min-width:701px){
@@ -74,6 +76,11 @@
     .portrait-window img{object-position:46% 34%;transform:none}
     h1{font-size:clamp(60px,6.25vw,72px);max-width:720px}
     .body{max-width:650px}
+    #works h1{font-size:clamp(46px,5vw,58px)}
+  }
+  @media(max-width:1050px) and (min-width:701px){
+    .work-row{grid-template-columns:1fr;gap:5px;padding:13px 0}
+    .work-clients{font-size:12px}
   }
   @media(max-width:900px) and (min-width:701px){
     .page{padding-left:22px}
@@ -98,8 +105,11 @@
     .body{max-width:100%;font-size:17px}
     .portrait-window{display:none}
     footer{position:relative;z-index:3;padding-top:12px;align-items:center;background:var(--bg)}
-    .work-links{grid-template-columns:1fr;max-width:100%}
-    .work-link:nth-child(odd),.work-link:nth-child(even){padding:17px 0;border-left:0}
+    #works h1{font-size:clamp(40px,10.5vw,50px);margin-bottom:16px}
+    .work-index{max-width:100%}
+    .work-row{grid-template-columns:1fr;gap:6px;padding:14px 0}
+    .work-row strong{font-size:19px}
+    .work-clients{font-size:12px}
     .rule{display:none}
   }
 </style>
@@ -123,17 +133,17 @@
         <div class="eyebrow">Experience</div>
         <h1>I’ve spent the past two decades designing digital products.</h1>
         <p class="body">Previously Head of Design at Shippo and Product Design Director at Zendesk. I now work independently with founders and product teams on product strategy, interaction design, and new product development.</p>
-        <p class="client-list"><strong>Selected clients:</strong> Kodex, Supertab, Ironclad, Brightback, Rainforest QA, and Mighty Networks.</p>
+        <p class="selected-clients"><strong>Selected clients:</strong> Kodex, Supertab, Ironclad, Brightback, Rainforest QA, and Mighty Networks.</p>
       </article>
 
       <article class="panel" id="works" data-label="Selected work" data-meta="Browse by category" data-image="./jason-portrait.jpg" data-image-alt="Portrait of Jason Wu">
         <div class="eyebrow">Selected work</div>
         <h1>Design work across four areas.</h1>
-        <div class="work-links">
-          <a class="work-link" href="#"><span><strong>Fintech &amp; Payments</strong><small>Payments, pricing and monetization</small></span><span class="work-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></span></a>
-          <a class="work-link" href="#"><span><strong>Enterprise Systems</strong><small>Complex workflows and B2B platforms</small></span><span class="work-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></span></a>
-          <a class="work-link" href="#"><span><strong>Consumer Products</strong><small>Content, commerce and everyday tools</small></span><span class="work-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></span></a>
-          <a class="work-link" href="#"><span><strong>AI &amp; Community</strong><small>Conversational, social and collaborative products</small></span><span class="work-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></span></a>
+        <div class="work-index">
+          <a class="work-row" href="#"><strong>Fintech &amp; Payments</strong><span class="work-clients">Supertab · Contribute.to</span></a>
+          <a class="work-row" href="#"><strong>Enterprise &amp; B2B</strong><span class="work-clients">Zendesk · Ironclad · Kodex · Rainforest QA</span></a>
+          <a class="work-row" href="#"><strong>Consumer Products</strong><span class="work-clients">Shippo · Brightback</span></a>
+          <a class="work-row" href="#"><strong>AI &amp; Community</strong><span class="work-clients">Supertab · Mighty Networks</span></a>
         </div>
       </article>
 
