@@ -57,25 +57,24 @@
 <body>
 <div class="page">
   <header>
-    <a class="mark" href="./index.html">1019 / Jason Wu</a>
+    <a class="mark" href="./concept-i.html">1019 / Jason Wu</a>
     <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch theme"><span class="theme-icon" id="themeIcon" aria-hidden="true"></span><span class="toggle-track" aria-hidden="true"><span class="toggle-knob"></span></span></button>
   </header>
   <main>
     <section class="intro">
       <div class="eyebrow">Say hi!</div>
-      <h1>Tell me what you’re working on.</h1>
-      <p>A few details will help me understand the opportunity, scope, and timing before we connect.</p>
-      <a class="back" href="./index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>Back to 1019</a>
+      <h1>I’d love to hear from you.</h1>
+      <p>Whether you want to talk through a project, get a second opinion, explore working together, or simply say hello, send me a note. I’ll get back to you personally.</p>
+      <a class="back" href="./concept-i.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>Back to 1019</a>
     </section>
     <form id="requestForm">
       <div class="field"><label for="name">Name *</label><input id="name" name="name" autocomplete="name" required /></div>
       <div class="field"><label for="email">Email *</label><input id="email" name="email" type="email" autocomplete="email" required /></div>
       <div class="field"><label for="company">Company</label><input id="company" name="company" autocomplete="organization" /></div>
-      <div class="field"><label for="projectType">Project type</label><select id="projectType" name="projectType"><option value="Not specified">Select one</option><option>Product strategy</option><option>Interaction design</option><option>0-to-1 product development</option><option>Design leadership / advising</option><option>Other</option></select></div>
-      <div class="field"><label for="timeline">Ideal start</label><select id="timeline" name="timeline"><option value="Not specified">Select one</option><option>As soon as possible</option><option>Within 1 month</option><option>Within 1–3 months</option><option>Later / exploring</option></select></div>
-      <div class="field"><label for="budget">Approximate budget</label><select id="budget" name="budget"><option value="Not specified">Select one</option><option>Under $15k</option><option>$15k–$30k</option><option>$30k–$60k</option><option>$60k+</option><option>Not sure yet</option></select></div>
-      <div class="field full"><label for="details">Tell me about the project *</label><textarea id="details" name="details" placeholder="What are you building, where are you in the process, and what kind of help are you looking for?" required></textarea></div>
-      <div class="actions"><button type="submit">Prepare request<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></button><span class="note" id="formNote">This opens a prefilled message in your email app so you can review it before sending.</span></div>
+      <div class="field"><label for="reason">What’s on your mind?</label><select id="reason" name="reason"><option value="Not specified">Select one</option><option>Just saying hi</option><option>Talk through a project</option><option>Get a second opinion</option><option>Explore working together</option><option>Something else</option></select></div>
+      <div class="field"><label for="timing">When would you like to connect?</label><select id="timing" name="timing"><option value="Flexible">Flexible</option><option>This week</option><option>Within the next two weeks</option><option>Sometime this month</option><option>Just exploring for now</option></select></div>
+      <div class="field full"><label for="details">Tell me what’s on your mind *</label><textarea id="details" name="details" placeholder="A few lines is plenty—tell me what you’re working on, what you’d like to talk through, or simply say hello." required></textarea></div>
+      <div class="actions"><button type="submit">Send me a note<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></button><span class="note" id="formNote">This opens a prefilled message in your email app so you can review it before sending.</span></div>
     </form>
   </main>
 </div>
@@ -94,16 +93,15 @@ document.getElementById('requestForm').addEventListener('submit',event=>{
   event.preventDefault();
   const form=new FormData(event.currentTarget);
   const name=form.get('name');
-  const subject=`Project request from ${name}`;
+  const subject=`A note from ${name}`;
   const body=[
     `Name: ${name}`,
     `Email: ${form.get('email')}`,
     `Company: ${form.get('company') || 'Not specified'}`,
-    `Project type: ${form.get('projectType')}`,
-    `Ideal start: ${form.get('timeline')}`,
-    `Approximate budget: ${form.get('budget')}`,
+    `Reason for reaching out: ${form.get('reason')}`,
+    `Preferred timing: ${form.get('timing')}`,
     '',
-    'Project details:',
+    'Message:',
     form.get('details')
   ].join('\n');
   window.location.href=`mailto:jason@1019.co?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
