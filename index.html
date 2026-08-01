@@ -15,7 +15,7 @@
   .page{position:relative;z-index:1;height:100svh;height:100dvh;padding:28px 32px;display:grid;grid-template-rows:auto minmax(0,1fr) auto;overflow:hidden}
   header{display:flex;justify-content:space-between;align-items:center}
   .header-actions{display:flex;align-items:center;gap:22px}
-  .mark{font-size:12px;line-height:1.35;letter-spacing:.11em;text-transform:uppercase;font-weight:650}.mark-line{display:inline}
+  .mark{display:inline-block;font-size:12px;line-height:1.35;letter-spacing:.11em;text-transform:uppercase;font-weight:650;cursor:pointer}.mark-line{display:inline}
   nav{display:flex;gap:25px;font-size:13px;color:var(--muted)}
   nav a:hover{color:var(--fg)}
   .theme-toggle{display:inline-flex;align-items:center;gap:8px;border:0;background:none;color:var(--muted);padding:0;cursor:pointer;font-size:12px;letter-spacing:.03em}
@@ -52,9 +52,14 @@
   .social-link{font-size:clamp(24px,2.2vw,34px);line-height:1.2;font-weight:500;letter-spacing:-.02em;color:var(--fg);position:relative}
   .social-link:after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .2s ease}
   .social-link:hover:after{transform:scaleX(1)}
+  .contact-intro{font-size:clamp(17px,1.28vw,21px);line-height:1.52;color:var(--body);max-width:560px;margin:0 0 30px}
+  .contact-cta{display:inline-flex;align-items:center;gap:12px;width:max-content;padding:14px 18px;border:1px solid var(--line);font-size:14px;font-weight:500;transition:border-color .2s ease,transform .2s ease}
+  .contact-cta:hover{border-color:var(--fg);transform:translateY(-2px)}
+  .contact-cta svg{width:17px;height:17px;stroke-width:1.8}
   footer{display:flex;justify-content:space-between;align-items:flex-end;gap:24px}
-  .section-label{font-size:12px;line-height:1.5;color:var(--muted)}
-  .section-label strong{display:block;color:var(--fg);font-weight:500;margin-bottom:2px}
+  .footer-meta{font-size:12px;line-height:1.5;color:var(--muted)}
+  .footer-meta[href]{cursor:pointer;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+  .footer-meta[href]:hover{color:var(--fg)}
   .controls{display:flex;align-items:center;gap:14px}
   button{appearance:none;border:0;background:none;color:var(--fg);font:inherit;padding:7px;cursor:pointer;opacity:.72}button:hover{opacity:1}.icon-button{width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center}.icon-button svg{width:18px;height:18px;stroke-width:1.7}
   .count{font-size:11px;letter-spacing:.08em;min-width:46px;text-align:center}
@@ -127,7 +132,7 @@
 <body>
 <main class="page">
   <header>
-    <div class="mark"><span class="mark-line">1019 /</span> <span class="mark-line">Jason Wu</span></div>
+    <a class="mark" href="#introduction" id="homeNav" aria-label="Return to introduction"><span class="mark-line">1019 /</span> <span class="mark-line">Jason Wu</span></a>
     <div class="header-actions"><nav><a href="mailto:jason@1019.co">Email</a><a href="https://www.linkedin.com/in/jasonwudesign/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="#works" id="worksNav">Work</a></nav><button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light mode" aria-pressed="false"><span class="theme-icon" id="themeIcon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></span><span class="toggle-track" aria-hidden="true"><span class="toggle-knob"></span></span></button></div>
   </header>
 
@@ -148,7 +153,7 @@
         </div>
       </article>
 
-      <article class="panel" id="works" data-label="Selected work" data-meta="Browse by category" data-image="./jason-portrait.jpg" data-image-alt="Portrait of Jason Wu">
+      <article class="panel" id="works" data-label="Selected work" data-meta="Clients by focus area" data-image="./jason-portrait.jpg" data-image-alt="Portrait of Jason Wu">
         <div class="eyebrow">Selected work</div>
         <h1>Design work across four areas.</h1>
         <div class="work-index">
@@ -159,7 +164,7 @@
         </div>
       </article>
 
-      <article class="panel" data-label="Elsewhere" data-meta="Find me online" data-image="./jason-portrait.jpg" data-image-alt="Portrait of Jason Wu">
+      <article class="panel" data-label="Elsewhere" data-meta="Say hi!" data-meta-href="./request.html" data-image="./jason-portrait.jpg" data-image-alt="Portrait of Jason Wu">
         <div class="eyebrow">Elsewhere</div>
         <h1>Find me online.</h1>
         <div class="social-links">
@@ -174,7 +179,7 @@
   </section>
 
   <footer>
-    <div class="section-label"><strong id="label">Introduction</strong><span id="meta">About Jason</span></div>
+    <a class="footer-meta" id="meta">About Jason</a>
     <div class="controls"><button class="icon-button" id="prev" aria-label="Previous section"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button><span class="count" id="count">01 / 04</span><button class="icon-button" id="next" aria-label="Next section"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button><span class="rule"><i id="indicator"></i></span></div>
   </footer>
 </main>
@@ -199,14 +204,20 @@ themeToggle.addEventListener('click',()=>{
 });
 
 const panels=[...document.querySelectorAll('.panel')];
-const label=document.getElementById('label'),meta=document.getElementById('meta'),count=document.getElementById('count'),indicator=document.getElementById('indicator'),sideImage=document.getElementById('sideImage');
+const meta=document.getElementById('meta'),count=document.getElementById('count'),indicator=document.getElementById('indicator'),sideImage=document.getElementById('sideImage');
 let current=0;
 function show(index){
   current=(index+panels.length)%panels.length;
   panels.forEach((panel,i)=>panel.classList.toggle('active',i===current));
   const activePanel=panels[current];
-  label.textContent=activePanel.dataset.label;
   meta.textContent=activePanel.dataset.meta;
+  if(activePanel.dataset.metaHref){
+    meta.href=activePanel.dataset.metaHref;
+    meta.setAttribute('aria-label','Open the Say hi project request form');
+  }else{
+    meta.removeAttribute('href');
+    meta.removeAttribute('aria-label');
+  }
   count.textContent=String(current+1).padStart(2,'0')+' / '+String(panels.length).padStart(2,'0');
   indicator.style.transform=`translateX(${current*100}%)`;
   if(sideImage && activePanel.dataset.image){
@@ -217,6 +228,7 @@ function show(index){
 document.getElementById('prev').onclick=()=>show(current-1);
 document.getElementById('next').onclick=()=>show(current+1);
 document.getElementById('worksNav').onclick=e=>{e.preventDefault();show(2)};
+document.getElementById('homeNav').onclick=e=>{e.preventDefault();show(0)};
 document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')show(current+1);if(e.key==='ArrowLeft')show(current-1)});
 let touchX=0;document.addEventListener('touchstart',e=>touchX=e.changedTouches[0].screenX,{passive:true});document.addEventListener('touchend',e=>{const d=e.changedTouches[0].screenX-touchX;if(Math.abs(d)>45)show(current+(d<0?1:-1))},{passive:true});
 </script>
