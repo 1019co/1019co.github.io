@@ -12,7 +12,7 @@
   body{overflow:hidden;transition:background-color .35s ease,color .35s ease}
   body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E")}
   a{color:inherit;text-decoration:none}
-  .page{position:relative;z-index:1;height:100svh;padding:28px 32px;display:grid;grid-template-rows:auto 1fr auto}
+  .page{position:relative;z-index:1;height:100svh;height:100dvh;padding:28px 32px;display:grid;grid-template-rows:auto minmax(0,1fr) auto;overflow:hidden}
   header{display:flex;justify-content:space-between;align-items:center}
   .header-actions{display:flex;align-items:center;gap:22px}
   .mark{font-size:12px;letter-spacing:.11em;text-transform:uppercase;font-weight:650}
@@ -23,17 +23,17 @@
   .toggle-track{position:relative;width:38px;height:20px;border:1px solid var(--line);border-radius:999px;transition:border-color .35s ease,background-color .35s ease}
   .toggle-knob{position:absolute;top:3px;left:3px;width:12px;height:12px;border-radius:50%;background:var(--fg);transition:transform .3s ease,background-color .35s ease}
   html[data-theme="light"] .toggle-knob{transform:translateX(18px)}
-  .theme-icon{width:14px;text-align:center;font-size:13px;line-height:1}
+  .theme-icon{width:15px;height:15px;display:inline-flex;align-items:center;justify-content:center}.theme-icon svg,.icon svg{width:100%;height:100%;display:block;stroke-width:1.8}
   .page,.panel,.portrait-window,.work-link,.rule,.rule i{transition:background-color .35s ease,color .35s ease,border-color .35s ease}
-  .hero{align-self:center;display:grid;grid-template-columns:minmax(520px,1.08fr) minmax(460px,.92fr);gap:clamp(54px,6vw,96px);align-items:center;max-width:1460px;width:100%;margin:0 auto;padding:34px 0}
-  .portrait-window{position:relative;width:min(100%,610px);aspect-ratio:1/1.15;overflow:hidden;background:var(--portrait-bg);justify-self:end}
+  .hero{align-self:stretch;display:grid;grid-template-columns:minmax(0,1.08fr) minmax(360px,.92fr);gap:clamp(72px,7vw,112px);align-items:center;max-width:1460px;width:100%;min-height:0;margin:0 auto;padding:28px 0}
+  .portrait-window{position:relative;width:min(100%,610px,calc((100dvh - 170px) / 1.15));max-height:calc(100dvh - 170px);aspect-ratio:1/1.15;overflow:hidden;background:var(--portrait-bg);justify-self:end}
   .portrait-window img{width:100%;height:100%;object-fit:cover;object-position:center 34%;display:block;transform:scale(1.01)}
   .portrait-window:after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(255,255,255,.12);pointer-events:none}
-  .content{position:relative;min-height:500px;display:flex;align-items:center}
+  .content{position:relative;min-width:0;min-height:0;height:100%;display:flex;align-items:center}
   .panel{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;opacity:0;transform:translateY(10px);pointer-events:none;transition:opacity .45s ease,transform .45s ease}
   .panel.active{opacity:1;transform:translateY(0);pointer-events:auto}
   .eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:24px}
-  h1{font-size:clamp(44px,4.65vw,72px);line-height:1.01;letter-spacing:-.05em;font-weight:520;max-width:680px;margin:0 0 26px}
+  h1{font-size:clamp(60px,4.65vw,72px);line-height:1.01;letter-spacing:-.05em;font-weight:520;max-width:680px;margin:0 0 26px;overflow-wrap:anywhere}
   .body{font-size:clamp(17px,1.28vw,21px);line-height:1.52;color:var(--body);max-width:620px;margin:0}
   .work-links{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:14px;max-width:680px;border-top:1px solid var(--line)}
   .work-link{display:flex;justify-content:space-between;gap:20px;padding:18px 0;border-bottom:1px solid var(--line);font-size:clamp(18px,1.5vw,22px)}
@@ -43,36 +43,35 @@
   .section-label{font-size:12px;line-height:1.5;color:var(--muted)}
   .section-label strong{display:block;color:var(--fg);font-weight:500;margin-bottom:2px}
   .controls{display:flex;align-items:center;gap:14px}
-  button{appearance:none;border:0;background:none;color:var(--fg);font:inherit;padding:7px;cursor:pointer;opacity:.72}button:hover{opacity:1}
+  button{appearance:none;border:0;background:none;color:var(--fg);font:inherit;padding:7px;cursor:pointer;opacity:.72}button:hover{opacity:1}.icon-button{width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center}.icon-button svg{width:18px;height:18px;stroke-width:1.7}.work-icon{width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto}.work-icon svg{width:18px;height:18px;stroke-width:1.7}
   .count{font-size:11px;letter-spacing:.08em;min-width:46px;text-align:center}
   .rule{width:98px;height:1px;background:var(--line);position:relative;overflow:hidden}.rule i{display:block;width:33.333%;height:100%;background:var(--fg);transition:transform .4s ease}
-  @media(max-width:980px){
-    body{overflow:auto}
-    .page{height:auto;min-height:100svh;padding:22px;grid-template-rows:auto 1fr auto}
-    header{align-items:flex-start;gap:14px}
-    .header-actions{gap:16px}
-    nav{gap:15px}
-    .hero{grid-template-columns:1fr;gap:18px;padding:52px 0 30px;max-width:760px}
-    .content{min-height:420px}
-    .panel{position:absolute}
-    h1{font-size:clamp(38px,10vw,60px);max-width:100%}
+  @media(max-width:1180px) and (min-width:701px){
+    .page{padding:24px 26px}
+    .hero{grid-template-columns:minmax(0,1.12fr) minmax(280px,.88fr);gap:clamp(56px,5vw,72px);max-width:none}
+    .portrait-window{width:min(100%,500px,calc((100dvh - 160px) / 1.15));max-height:calc(100dvh - 160px)}
+    .content{min-height:0}
+    h1{font-size:clamp(60px,6.2vw,72px);max-width:100%}
     .body{max-width:100%}
-    .portrait-window{display:block;width:min(58vw,420px);aspect-ratio:4/3;justify-self:end;margin:6px 0 0 auto}
+  }
+  @media(max-width:700px){
+    body{overflow:hidden}
+    .page{height:100svh;height:100dvh;min-height:0;padding:18px;grid-template-rows:auto minmax(0,1fr) auto}
+    header{align-items:flex-start;gap:14px}
+    .header-actions{gap:12px}
+    nav{gap:12px;font-size:12px}
+    nav a:nth-child(2){display:none}
+    .hero{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) auto;gap:clamp(24px,5vh,42px);padding:34px 0 18px;max-width:100%;overflow-y:auto;overscroll-behavior:contain;align-content:start}
+    .content{min-height:clamp(360px,54vh,500px)}
+    .panel{position:absolute}
+    h1{font-size:clamp(40px,12vw,58px);max-width:100%}
+    .body{max-width:100%;font-size:17px}
+    .portrait-window{display:block;width:min(64vw,320px);max-height:none;aspect-ratio:4/3;justify-self:end;margin:0 0 0 auto;flex:none}
     .portrait-window img{object-position:center 30%}
-    footer{padding-top:12px}
+    footer{position:relative;z-index:3;padding-top:12px;align-items:center;background:var(--bg)}
     .work-links{grid-template-columns:1fr;max-width:100%}
     .work-link:nth-child(odd),.work-link:nth-child(even){padding:17px 0;border-left:0}
     .rule{display:none}
-  }
-  @media(max-width:540px){
-    .page{padding:18px}
-    nav a:nth-child(2){display:none}
-    .header-actions{gap:12px}
-    nav{gap:12px;font-size:12px}
-    .content{min-height:430px}
-    .body{font-size:17px}
-    .portrait-window{width:min(64vw,320px);aspect-ratio:4/3;margin-top:2px}
-    footer{align-items:center}
   }
 </style>
 </head>
@@ -80,15 +79,15 @@
 <main class="page">
   <header>
     <div class="mark">1019 / Jason Wu</div>
-    <div class="header-actions"><nav><a href="mailto:jason@1019.co">Email</a><a href="https://www.linkedin.com/in/jasonwudesign/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="#works" id="worksNav">Work</a></nav><button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light mode" aria-pressed="false"><span class="theme-icon" id="themeIcon">☾</span><span class="toggle-track" aria-hidden="true"><span class="toggle-knob"></span></span></button></div>
+    <div class="header-actions"><nav><a href="mailto:jason@1019.co">Email</a><a href="https://www.linkedin.com/in/jasonwudesign/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="#works" id="worksNav">Work</a></nav><button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light mode" aria-pressed="false"><span class="theme-icon" id="themeIcon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></span><span class="toggle-track" aria-hidden="true"><span class="toggle-knob"></span></span></button></div>
   </header>
 
   <section class="hero">
     <div class="content">
       <article class="panel active" data-label="Introduction" data-meta="About Jason">
         <div class="eyebrow">Introduction</div>
-        <h1>Independent product designer and advisor.</h1>
-        <p class="body">I help teams turn complex ideas into clear, useful products. I’m based in the San Francisco Bay Area and work with startups and established teams across product strategy, interaction design, and design leadership.</p>
+        <h1>I am Jason Wu.<br>An independent product designer and advisor.</h1>
+        <p class="body">I help founders and product teams turn complex ideas into clear, useful digital products. Based in the San Francisco Bay Area, I work across product strategy, interaction design, and design leadership.</p>
       </article>
 
       <article class="panel" data-label="Experience" data-meta="Work background">
@@ -101,10 +100,10 @@
         <div class="eyebrow">Selected work</div>
         <h1>Design work across four areas.</h1>
         <div class="work-links">
-          <a class="work-link" href="#"><span><strong>Fintech &amp; Payments</strong><small>Payments, pricing and monetization</small></span><span>↗</span></a>
-          <a class="work-link" href="#"><span><strong>Enterprise Systems</strong><small>Complex workflows and B2B platforms</small></span><span>↗</span></a>
-          <a class="work-link" href="#"><span><strong>Consumer Products</strong><small>Content, commerce and everyday tools</small></span><span>↗</span></a>
-          <a class="work-link" href="#"><span><strong>AI &amp; Community</strong><small>Conversational, social and collaborative products</small></span><span>↗</span></a>
+          <a class="work-link" href="#"><span><strong>Fintech &amp; Payments</strong><small>Payments, pricing and monetization</small></span><span class="work-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></span></a>
+          <a class="work-link" href="#"><span><strong>Enterprise Systems</strong><small>Complex workflows and B2B platforms</small></span><span class="work-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></span></a>
+          <a class="work-link" href="#"><span><strong>Consumer Products</strong><small>Content, commerce and everyday tools</small></span><span class="work-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></span></a>
+          <a class="work-link" href="#"><span><strong>AI &amp; Community</strong><small>Conversational, social and collaborative products</small></span><span class="work-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></span></a>
         </div>
       </article>
     </div>
@@ -113,7 +112,7 @@
 
   <footer>
     <div class="section-label"><strong id="label">Introduction</strong><span id="meta">About Jason</span></div>
-    <div class="controls"><button id="prev" aria-label="Previous section">←</button><span class="count" id="count">01 / 03</span><button id="next" aria-label="Next section">→</button><span class="rule"><i id="indicator"></i></span></div>
+    <div class="controls"><button class="icon-button" id="prev" aria-label="Previous section"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button><span class="count" id="count">01 / 03</span><button class="icon-button" id="next" aria-label="Next section"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button><span class="rule"><i id="indicator"></i></span></div>
   </footer>
 </main>
 <script>
@@ -127,7 +126,7 @@ function applyTheme(theme){
   const isLight=theme==='light';
   themeToggle.setAttribute('aria-pressed',String(isLight));
   themeToggle.setAttribute('aria-label',isLight?'Switch to dark mode':'Switch to light mode');
-  themeIcon.textContent=isLight?'☀':'☾';
+  themeIcon.innerHTML=isLight ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>' : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>';
 }
 applyTheme(initialTheme);
 themeToggle.addEventListener('click',()=>{
