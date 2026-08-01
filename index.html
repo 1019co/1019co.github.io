@@ -15,7 +15,7 @@
   .page{position:relative;z-index:1;height:100svh;height:100dvh;padding:28px 32px;display:grid;grid-template-rows:auto minmax(0,1fr) auto;overflow:hidden}
   header{display:flex;justify-content:space-between;align-items:center}
   .header-actions{display:flex;align-items:center;gap:22px}
-  .mark{font-size:12px;letter-spacing:.11em;text-transform:uppercase;font-weight:650}
+  .mark{font-size:12px;line-height:1.35;letter-spacing:.11em;text-transform:uppercase;font-weight:650}.mark-line{display:inline}
   nav{display:flex;gap:25px;font-size:13px;color:var(--muted)}
   nav a:hover{color:var(--fg)}
   .theme-toggle{display:inline-flex;align-items:center;gap:8px;border:0;background:none;color:var(--muted);padding:0;cursor:pointer;font-size:12px;letter-spacing:.03em}
@@ -58,6 +58,7 @@
     body{overflow:hidden}
     .page{height:100svh;height:100dvh;min-height:0;padding:18px;grid-template-rows:auto minmax(0,1fr) auto}
     header{align-items:flex-start;gap:14px}
+    .mark-line{display:block}
     .header-actions{gap:12px}
     nav{gap:12px;font-size:12px}
     .hero{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr);gap:0;padding:34px 0 18px;max-width:100%;overflow-y:auto;overscroll-behavior:contain;align-content:start}
@@ -76,7 +77,7 @@
 <body>
 <main class="page">
   <header>
-    <div class="mark">1019 / Jason Wu</div>
+    <div class="mark"><span class="mark-line">1019 /</span> <span class="mark-line">Jason Wu</span></div>
     <div class="header-actions"><nav><a href="mailto:jason@1019.co">Email</a><a href="https://www.linkedin.com/in/jasonwudesign/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="#works" id="worksNav">Work</a></nav><button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light mode" aria-pressed="false"><span class="theme-icon" id="themeIcon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></span><span class="toggle-track" aria-hidden="true"><span class="toggle-knob"></span></span></button></div>
   </header>
 
