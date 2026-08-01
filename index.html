@@ -35,6 +35,8 @@
   .eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:24px}
   h1{font-size:clamp(60px,4.65vw,72px);line-height:1.01;letter-spacing:-.05em;font-weight:520;max-width:680px;margin:0 0 26px;overflow-wrap:anywhere}
   .body{font-size:clamp(17px,1.28vw,21px);line-height:1.52;color:var(--body);max-width:620px;margin:0}
+  .client-list{margin:22px 0 0;max-width:640px;font-size:13px;line-height:1.6;color:var(--muted)}
+  .client-list strong{color:var(--fg);font-weight:500}
   .work-links{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:14px;max-width:680px;border-top:1px solid var(--line)}
   .work-link{display:flex;justify-content:space-between;gap:20px;padding:18px 0;border-bottom:1px solid var(--line);font-size:clamp(18px,1.5vw,22px)}
   .work-link:nth-child(odd){padding-right:26px}.work-link:nth-child(even){padding-left:26px;border-left:1px solid var(--line)}
@@ -87,19 +89,20 @@
 
   <section class="hero">
     <div class="content">
-      <article class="panel active" data-label="Introduction" data-meta="About Jason">
+      <article class="panel active" data-label="Introduction" data-meta="About Jason" data-image="./jason-portrait.jpg" data-image-alt="Portrait of Jason Wu">
         <div class="eyebrow">Introduction</div>
         <h1>I am Jason Wu.<br>An independent product designer and advisor.</h1>
         <p class="body">I help founders and product teams turn complex ideas into clear, useful digital products. Based in the San Francisco Bay Area, I work across product strategy, interaction design, and design leadership.</p>
       </article>
 
-      <article class="panel" data-label="Experience" data-meta="Work background">
+      <article class="panel" data-label="Experience" data-meta="Work background" data-image="./jason-portrait.jpg" data-image-alt="Portrait of Jason Wu">
         <div class="eyebrow">Experience</div>
         <h1>I’ve spent the past two decades designing digital products.</h1>
         <p class="body">Previously Head of Design at Shippo and Product Design Director at Zendesk. I now work independently with founders and product teams on product strategy, interaction design, and new product development.</p>
+        <p class="client-list"><strong>Selected clients:</strong> Kodex, Supertab, Ironclad, Brightback, Rainforest QA, and Mighty Networks.</p>
       </article>
 
-      <article class="panel" id="works" data-label="Selected work" data-meta="Browse by category">
+      <article class="panel" id="works" data-label="Selected work" data-meta="Browse by category" data-image="./jason-portrait.jpg" data-image-alt="Portrait of Jason Wu">
         <div class="eyebrow">Selected work</div>
         <h1>Design work across four areas.</h1>
         <div class="work-links">
@@ -110,7 +113,7 @@
         </div>
       </article>
 
-      <article class="panel" data-label="Elsewhere" data-meta="Find me online">
+      <article class="panel" data-label="Elsewhere" data-meta="Find me online" data-image="./jason-portrait.jpg" data-image-alt="Portrait of Jason Wu">
         <div class="eyebrow">Elsewhere</div>
         <h1>Find me online.</h1>
         <div class="social-links">
@@ -121,7 +124,7 @@
         </div>
       </article>
     </div>
-    <figure class="portrait-window"><img src="./jason-portrait.jpg" alt="Portrait of Jason Wu" /></figure>
+    <figure class="portrait-window"><img id="sideImage" src="./jason-portrait.jpg" alt="Portrait of Jason Wu" /></figure>
   </section>
 
   <footer>
@@ -150,15 +153,20 @@ themeToggle.addEventListener('click',()=>{
 });
 
 const panels=[...document.querySelectorAll('.panel')];
-const label=document.getElementById('label'),meta=document.getElementById('meta'),count=document.getElementById('count'),indicator=document.getElementById('indicator');
+const label=document.getElementById('label'),meta=document.getElementById('meta'),count=document.getElementById('count'),indicator=document.getElementById('indicator'),sideImage=document.getElementById('sideImage');
 let current=0;
 function show(index){
   current=(index+panels.length)%panels.length;
   panels.forEach((panel,i)=>panel.classList.toggle('active',i===current));
-  label.textContent=panels[current].dataset.label;
-  meta.textContent=panels[current].dataset.meta;
+  const activePanel=panels[current];
+  label.textContent=activePanel.dataset.label;
+  meta.textContent=activePanel.dataset.meta;
   count.textContent=String(current+1).padStart(2,'0')+' / '+String(panels.length).padStart(2,'0');
   indicator.style.transform=`translateX(${current*100}%)`;
+  if(sideImage && activePanel.dataset.image){
+    sideImage.src=activePanel.dataset.image;
+    sideImage.alt=activePanel.dataset.imageAlt || '';
+  }
 }
 document.getElementById('prev').onclick=()=>show(current-1);
 document.getElementById('next').onclick=()=>show(current+1);
