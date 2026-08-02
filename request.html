@@ -60,25 +60,25 @@
 <body>
 <div class="page">
   <header>
-    <a class="mark" href="./concept-i.html">1019 / Jason Wu</a>
+    <a class="mark" href="./index.html">1019 / Jason Wu</a>
     <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch theme"><span class="theme-icon" id="themeIcon" aria-hidden="true"></span><span class="toggle-track" aria-hidden="true"><span class="toggle-knob"></span></span></button>
   </header>
   <main>
     <section class="intro">
       <div class="eyebrow">Say hi!</div>
-      <h1>I’d love to hear from you.</h1>
-      <p>Whether you want to talk through a project, get a second opinion, explore working together, or simply say hello, send me a note. I’ll get back to you personally.</p>
-      <a class="back" href="./concept-i.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>Back to 1019</a>
+      <h1>What’s on your mind?</h1>
+      <p>Want to chat, talk through a project, explore an idea, or just say hello? Drop me a note.</p>
+      <a class="back" href="./index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>Back to 1019</a>
     </section>
     <form id="requestForm" action="https://formspree.io/f/mkodlyoy" method="POST">
       <input type="hidden" name="_subject" value="A new note from 1019.co" />
       <div class="field"><label for="name">Name *</label><input id="name" name="name" autocomplete="name" required /></div>
       <div class="field"><label for="email">Email *</label><input id="email" name="email" type="email" autocomplete="email" required /></div>
       <div class="field"><label for="company">Company</label><input id="company" name="company" autocomplete="organization" /></div>
-      <div class="field"><label for="reason">What’s on your mind?</label><select id="reason" name="reason"><option value="Not specified">Select one</option><option>Just saying hi</option><option>Talk through a project</option><option>Get a second opinion</option><option>Explore working together</option><option>Something else</option></select></div>
-      <div class="field"><label for="timing">When would you like to connect?</label><select id="timing" name="timing"><option value="Flexible">Flexible</option><option>This week</option><option>Within the next two weeks</option><option>Sometime this month</option><option>Just exploring for now</option></select></div>
-      <div class="field full"><label for="details">Tell me what’s on your mind *</label><textarea id="details" name="details" placeholder="A few lines is plenty—tell me what you’re working on, what you’d like to talk through, or simply say hello." required></textarea></div>
-      <div class="actions"><button id="submitButton" type="submit">Send me a note<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></button><span class="note" id="formNote" role="status" aria-live="polite">I’ll reply directly to the email address you provide.</span></div>
+      <div class="field"><label for="reason">What would you like to chat about?</label><select id="reason" name="reason"><option value="Not specified">Select one</option><option>Schedule a chat</option><option>Talk about a project</option><option>Product or design advising</option><option>Collaboration or introduction</option><option>Something else</option></select></div>
+      <div class="field"><label for="timing">When works for you?</label><select id="timing" name="timing"><option value="Flexible">Flexible</option><option>This week</option><option>Within the next two weeks</option><option>Sometime this month</option><option>Just exploring for now</option></select></div>
+      <div class="field full"><label for="details">Tell me a little more *</label><textarea id="details" name="details" placeholder="A few lines is plenty—what you’d like to talk about, what you’re working on, or when you’d like to connect." required></textarea></div>
+      <div class="actions"><button type="submit">Send a note<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></button><span class="note" id="formNote" role="status" aria-live="polite">I’ll reply directly to the email address you provide.</span></div>
     </form>
   </main>
 </div>
