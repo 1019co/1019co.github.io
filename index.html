@@ -146,6 +146,7 @@
     .work-clients{font-size:12px}
     .rule{display:none}
   }
+
 </style>
 </head>
 <body>
@@ -184,9 +185,9 @@
         </div>
       </article>
 
-      <article class="panel" id="works" data-label="Selected clients" data-image="./jason-portrait.jpg" data-image-alt="Portrait of Jason Wu">
-        <div class="eyebrow">Selected clients</div>
-        <h1>Clients across four focus areas.</h1>
+      <article class="panel" id="works" data-label="Selected work" data-image="./jason-portrait.jpg" data-image-alt="Portrait of Jason Wu">
+        <div class="eyebrow">Selected work</div>
+        <h1>Work across four focus areas.</h1>
         <div class="work-index">
           <div class="work-row"><strong>Enterprise &amp; B2B</strong><span class="work-clients"><a class="client-link" href="https://www.zendesk.com/" target="_blank" rel="noopener noreferrer">Zendesk</a><span class="client-sep">·</span><a class="client-link" href="https://goshippo.com/" target="_blank" rel="noopener noreferrer">Shippo</a><span class="client-sep">·</span><a class="client-link" href="https://ironcladapp.com/" target="_blank" rel="noopener noreferrer">Ironclad</a><span class="client-sep">·</span><a class="client-link" href="https://www.kodexglobal.com/" target="_blank" rel="noopener noreferrer">Kodex</a><span class="client-sep">·</span><a class="client-link" href="https://www.rainforestqa.com/" target="_blank" rel="noopener noreferrer">Rainforest QA</a></span></div>
           <div class="work-row"><strong>Fintech &amp; Payments</strong><span class="work-clients"><a class="client-link" href="https://supertab.co/" target="_blank" rel="noopener noreferrer">Supertab</a></span></div>
@@ -214,6 +215,7 @@
     <div class="controls"><button class="icon-button" id="prev" aria-label="Previous section"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button><span class="count" id="count">01 / 05</span><button class="icon-button" id="next" aria-label="Next section"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button><span class="rule"><i id="indicator"></i></span></div>
   </footer>
 </main>
+
 <script>
 const root=document.documentElement;
 const themeToggle=document.getElementById('themeToggle');
@@ -253,6 +255,9 @@ document.getElementById('next').onclick=()=>show(current+1);
 document.getElementById('worksNav').onclick=e=>{e.preventDefault();show(3)};
 document.getElementById('homeNav').onclick=e=>{e.preventDefault();show(0)};
 document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')show(current+1);if(e.key==='ArrowLeft')show(current-1)});
+
+
+if(location.hash==='#clients')show(3);
 let touchX=0;document.addEventListener('touchstart',e=>touchX=e.changedTouches[0].screenX,{passive:true});document.addEventListener('touchend',e=>{const d=e.changedTouches[0].screenX-touchX;if(Math.abs(d)>45)show(current+(d<0?1:-1))},{passive:true});
 </script>
 </body>
